@@ -26,6 +26,9 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
       this.tabControl1 = new System.Windows.Forms.TabControl();
       this.tabWelcome = new System.Windows.Forms.TabPage();
+      this.labelCredits = new System.Windows.Forms.Label();
+      this.label1 = new System.Windows.Forms.Label();
+      this.richTextBox_Information = new System.Windows.Forms.RichTextBox();
       this.richTextBox1 = new System.Windows.Forms.RichTextBox();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.tabImport = new System.Windows.Forms.TabPage();
@@ -58,6 +61,7 @@
       this.listBoxExport_Account = new System.Windows.Forms.ListBox();
       this.labelExport_Account = new System.Windows.Forms.Label();
       this.tabSettings = new System.Windows.Forms.TabPage();
+      this.buttonSettings_Browse = new System.Windows.Forms.Button();
       this.label2 = new System.Windows.Forms.Label();
       this.buttonWowPath_checkSave = new System.Windows.Forms.Button();
       this.labelWowPath = new System.Windows.Forms.Label();
@@ -66,10 +70,6 @@
       this.openFileDialogImport = new System.Windows.Forms.OpenFileDialog();
       this.backgroundWorkerImport = new System.ComponentModel.BackgroundWorker();
       this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-      this.buttonSettings_Browse = new System.Windows.Forms.Button();
-      this.richTextBox_Information = new System.Windows.Forms.RichTextBox();
-      this.label1 = new System.Windows.Forms.Label();
-      this.labelCredits = new System.Windows.Forms.Label();
       this.tabControl1.SuspendLayout();
       this.tabWelcome.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -104,6 +104,42 @@
       this.tabWelcome.TabIndex = 3;
       this.tabWelcome.Text = "Welcome";
       this.tabWelcome.UseVisualStyleBackColor = true;
+      // 
+      // labelCredits
+      // 
+      this.labelCredits.AutoSize = true;
+      this.labelCredits.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelCredits.Location = new System.Drawing.Point(244, 371);
+      this.labelCredits.Name = "labelCredits";
+      this.labelCredits.Size = new System.Drawing.Size(251, 14);
+      this.labelCredits.TabIndex = 13;
+      this.labelCredits.Text = "© 2016 - WoWZiport v 1.1 - Yves Lange (Kursion)";
+      this.labelCredits.Click += new System.EventHandler(this.label3_Click);
+      // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label1.ForeColor = System.Drawing.SystemColors.ScrollBar;
+      this.label1.Location = new System.Drawing.Point(299, 189);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(189, 37);
+      this.label1.TabIndex = 12;
+      this.label1.Text = "Information";
+      this.label1.Click += new System.EventHandler(this.label1_Click);
+      // 
+      // richTextBox_Information
+      // 
+      this.richTextBox_Information.BackColor = System.Drawing.SystemColors.Window;
+      this.richTextBox_Information.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      this.richTextBox_Information.Location = new System.Drawing.Point(10, 233);
+      this.richTextBox_Information.Name = "richTextBox_Information";
+      this.richTextBox_Information.ReadOnly = true;
+      this.richTextBox_Information.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+      this.richTextBox_Information.Size = new System.Drawing.Size(478, 113);
+      this.richTextBox_Information.TabIndex = 4;
+      this.richTextBox_Information.Text = resources.GetString("richTextBox_Information.Text");
+      this.richTextBox_Information.TextChanged += new System.EventHandler(this.richTextBox_Information_TextChanged);
       // 
       // richTextBox1
       // 
@@ -443,6 +479,16 @@
       this.tabSettings.TabIndex = 2;
       this.tabSettings.Text = "Settings";
       // 
+      // buttonSettings_Browse
+      // 
+      this.buttonSettings_Browse.Location = new System.Drawing.Point(388, 67);
+      this.buttonSettings_Browse.Name = "buttonSettings_Browse";
+      this.buttonSettings_Browse.Size = new System.Drawing.Size(100, 23);
+      this.buttonSettings_Browse.TabIndex = 12;
+      this.buttonSettings_Browse.Text = "Browse";
+      this.buttonSettings_Browse.UseVisualStyleBackColor = true;
+      this.buttonSettings_Browse.Click += new System.EventHandler(this.buttonSettings_Browse_Click);
+      // 
       // label2
       // 
       this.label2.AutoSize = true;
@@ -493,52 +539,6 @@
       this.backgroundWorkerImport.WorkerReportsProgress = true;
       this.backgroundWorkerImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerImport_DoWork);
       this.backgroundWorkerImport.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerImport_ProgressChanged);
-      // 
-      // buttonSettings_Browse
-      // 
-      this.buttonSettings_Browse.Location = new System.Drawing.Point(388, 67);
-      this.buttonSettings_Browse.Name = "buttonSettings_Browse";
-      this.buttonSettings_Browse.Size = new System.Drawing.Size(100, 23);
-      this.buttonSettings_Browse.TabIndex = 12;
-      this.buttonSettings_Browse.Text = "Browse";
-      this.buttonSettings_Browse.UseVisualStyleBackColor = true;
-      this.buttonSettings_Browse.Click += new System.EventHandler(this.buttonSettings_Browse_Click);
-      // 
-      // richTextBox_Information
-      // 
-      this.richTextBox_Information.BackColor = System.Drawing.SystemColors.Window;
-      this.richTextBox_Information.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.richTextBox_Information.Location = new System.Drawing.Point(10, 233);
-      this.richTextBox_Information.Name = "richTextBox_Information";
-      this.richTextBox_Information.ReadOnly = true;
-      this.richTextBox_Information.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-      this.richTextBox_Information.Size = new System.Drawing.Size(478, 113);
-      this.richTextBox_Information.TabIndex = 4;
-      this.richTextBox_Information.Text = resources.GetString("richTextBox_Information.Text");
-      this.richTextBox_Information.TextChanged += new System.EventHandler(this.richTextBox_Information_TextChanged);
-      // 
-      // label1
-      // 
-      this.label1.AutoSize = true;
-      this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.ForeColor = System.Drawing.SystemColors.ScrollBar;
-      this.label1.Location = new System.Drawing.Point(299, 189);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(189, 37);
-      this.label1.TabIndex = 12;
-      this.label1.Text = "Information";
-      this.label1.Click += new System.EventHandler(this.label1_Click);
-      // 
-      // labelCredits
-      // 
-      this.labelCredits.AutoSize = true;
-      this.labelCredits.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelCredits.Location = new System.Drawing.Point(244, 371);
-      this.labelCredits.Name = "labelCredits";
-      this.labelCredits.Size = new System.Drawing.Size(251, 14);
-      this.labelCredits.TabIndex = 13;
-      this.labelCredits.Text = "© 2016 - WoWZiport v 1.0 - Yves Lange (Kursion)";
-      this.labelCredits.Click += new System.EventHandler(this.label3_Click);
       // 
       // Form1
       // 

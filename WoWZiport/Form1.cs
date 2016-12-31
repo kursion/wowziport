@@ -70,6 +70,7 @@ namespace WoWAddonSync {
 
     private void buttonWowPath_checkSave_Click(object sender, EventArgs e) {
       settings_checkSave();
+      Application.Restart();
     }
 
     private void settings_checkSave() {
