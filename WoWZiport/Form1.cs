@@ -33,7 +33,6 @@ namespace WoWAddonSync {
       InitializeWowPath();
       updateExport();
       updateImport();
-      
     }
 
     #region WowPath
@@ -105,7 +104,7 @@ namespace WoWAddonSync {
 
       progressText = "Initializing..."; worker.ReportProgress(0);
       string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
-      string outputDir = $"{getExportFolder()}-{datetime}\\";
+      string outputDir = $"{getExportFolder()}\\";
       string wowWTFDir = $"{wowPath.get()}WTF/Account/{exportAccountDir}/{exportRealmDir}/{exportCharacterDir}/";
       string wowAddOnsDir = $"{wowPath.get()}Interface/AddOns/";
       string zipWTF = $"{outputDir}wtf.zip";
@@ -157,7 +156,7 @@ namespace WoWAddonSync {
     private void updateExport() {
       if (this.wowPath.isValid()) {
         updateListBoxes(listBoxExport_Account, "WTF/Account");
-        textBoxExport_Path.Text = getExportFolder();
+        textBoxExport_Path.Text = getExportFolder()+"\\"+getExportFileName();
       } else {
         tabExport.Enabled = false;
       }
@@ -217,7 +216,7 @@ namespace WoWAddonSync {
       DialogResult result = openFileDialogImport.ShowDialog();
       if (result == DialogResult.OK) {
         string file = openFileDialogImport.FileName;
-        textBoxImport_Path.Text = file;
+        textBoxExport_Path.Text = file;
         buttonImport.Enabled = true;
       }
     }
@@ -241,8 +240,8 @@ namespace WoWAddonSync {
     }
 
     private void buttonSettings_Browse_Click(object sender, EventArgs e) {
-      if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
-        textBoxWowPath.Text = folderBrowserDialog1.SelectedPath;
+      if (folderBrowserDialog.ShowDialog() == DialogResult.OK) {
+        textBoxWowPath.Text = folderBrowserDialog.SelectedPath;
         settings_checkSave();
       }
     }
@@ -257,6 +256,19 @@ namespace WoWAddonSync {
 
     private void richTextBox_Information_TextChanged(object sender, EventArgs e) {
 
+    }
+
+    private void textBoxExport_Path_TextChanged(object sender, EventArgs e) {
+
+    }
+
+    private void buttonExport_Browse_Click(object sender, EventArgs e) {
+      DialogResult result = folderBrowserDialog.ShowDialog();
+      if (result == DialogResult.OK) {
+        string file = folderBrowserDialog.SelectedPath;
+        textBoxExport_Path.Text = file + "\\" + getExportFileName();
+        buttonImport.Enabled = true;
+      }
     }
 
     private void backgroundWorkerImport_DoWork(object sender, DoWorkEventArgs e) {
@@ -325,6 +337,7 @@ namespace WoWAddonSync {
       worker.ReportProgress(0);
     }
 
+
     private void backgroundWorkerImport_ProgressChanged(object sender, ProgressChangedEventArgs e) {
       progressBarImport.Value = (e.ProgressPercentage);
       if (progressBarImport.Value == 0) {
@@ -343,10 +356,13 @@ namespace WoWAddonSync {
 
     // TOOLS
     private string getExportFolder() {
-      return Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + $"\\WoWZiport-export-tmp";
+      return Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
     }
 
-
+    private string getExportFileName() {
+      string datetime = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+      return $"{datetime}-wowziport.zip";
+    }
 
     private string dirName(string dir) {
       return dir.Substring(dir.LastIndexOf('/') + 1);

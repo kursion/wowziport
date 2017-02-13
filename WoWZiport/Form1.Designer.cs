@@ -48,6 +48,7 @@
       this.listBoxImport_Account = new System.Windows.Forms.ListBox();
       this.labelImport_Account = new System.Windows.Forms.Label();
       this.tabExport = new System.Windows.Forms.TabPage();
+      this.buttonExport_Browse = new System.Windows.Forms.Button();
       this.labelExport_ProgressBar = new System.Windows.Forms.Label();
       this.labelExport_Title = new System.Windows.Forms.Label();
       this.progressBarExport = new System.Windows.Forms.ProgressBar();
@@ -69,7 +70,7 @@
       this.backgroundWorkerExport = new System.ComponentModel.BackgroundWorker();
       this.openFileDialogImport = new System.Windows.Forms.OpenFileDialog();
       this.backgroundWorkerImport = new System.ComponentModel.BackgroundWorker();
-      this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+      this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
       this.tabControl1.SuspendLayout();
       this.tabWelcome.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -334,6 +335,7 @@
       // 
       // tabExport
       // 
+      this.tabExport.Controls.Add(this.buttonExport_Browse);
       this.tabExport.Controls.Add(this.labelExport_ProgressBar);
       this.tabExport.Controls.Add(this.labelExport_Title);
       this.tabExport.Controls.Add(this.progressBarExport);
@@ -353,6 +355,16 @@
       this.tabExport.TabIndex = 1;
       this.tabExport.Text = "Export";
       this.tabExport.UseVisualStyleBackColor = true;
+      // 
+      // buttonExport_Browse
+      // 
+      this.buttonExport_Browse.Location = new System.Drawing.Point(344, 242);
+      this.buttonExport_Browse.Name = "buttonExport_Browse";
+      this.buttonExport_Browse.Size = new System.Drawing.Size(75, 23);
+      this.buttonExport_Browse.TabIndex = 12;
+      this.buttonExport_Browse.Text = "Browse";
+      this.buttonExport_Browse.UseVisualStyleBackColor = true;
+      this.buttonExport_Browse.Click += new System.EventHandler(this.buttonExport_Browse_Click);
       // 
       // labelExport_ProgressBar
       // 
@@ -397,6 +409,7 @@
       this.textBoxExport_Path.ReadOnly = true;
       this.textBoxExport_Path.Size = new System.Drawing.Size(249, 20);
       this.textBoxExport_Path.TabIndex = 7;
+      this.textBoxExport_Path.TextChanged += new System.EventHandler(this.textBoxExport_Path_TextChanged);
       // 
       // buttonExport
       // 
@@ -609,11 +622,12 @@
     private System.Windows.Forms.Button buttonImport_Browse;
     private System.Windows.Forms.OpenFileDialog openFileDialogImport;
     private System.ComponentModel.BackgroundWorker backgroundWorkerImport;
-    private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+    private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     private System.Windows.Forms.Button buttonSettings_Browse;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.RichTextBox richTextBox_Information;
     private System.Windows.Forms.Label labelCredits;
+    private System.Windows.Forms.Button buttonExport_Browse;
   }
 }
 
